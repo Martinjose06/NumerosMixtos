@@ -10,6 +10,7 @@ package interfaz;
  * @author LUCYLEONOR
  */
 import clases.*;
+
 public class Principal extends javax.swing.JFrame {
 
     /**
@@ -17,6 +18,13 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        txtEntero1.requestFocusInWindow();
+        cmdFraccion.setEnabled(false);
+        txtEntero3.setEnabled(false);
+        txtNumerador3.setEnabled(false);
+        txtNumerador4.setEnabled(false);
+        txtDenominador3.setEnabled(false);
+        txtDenominador4.setEnabled(false);
     }
 
     /**
@@ -42,7 +50,7 @@ public class Principal extends javax.swing.JFrame {
         cmbOp = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         cmdCalcular = new javax.swing.JButton();
-        cmdNumeroMixto = new javax.swing.JButton();
+        cmdFraccion = new javax.swing.JButton();
         cmdLimpiar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -56,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
         txtEntero2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Numeros Mixtos");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,8 +75,8 @@ public class Principal extends javax.swing.JFrame {
                 txtNumerador1KeyTyped(evt);
             }
         });
-        jPanel1.add(txtNumerador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 40, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 40, 10));
+        jPanel1.add(txtNumerador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 30, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 30, 10));
 
         txtDenominador1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDenominador1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -75,7 +84,7 @@ public class Principal extends javax.swing.JFrame {
                 txtDenominador1KeyTyped(evt);
             }
         });
-        jPanel1.add(txtDenominador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 40, -1));
+        jPanel1.add(txtDenominador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 30, -1));
 
         txtNumerador2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtNumerador2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -123,13 +132,13 @@ public class Principal extends javax.swing.JFrame {
         });
         jPanel2.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, -1));
 
-        cmdNumeroMixto.setText("Número Mixto");
-        cmdNumeroMixto.addActionListener(new java.awt.event.ActionListener() {
+        cmdFraccion.setText("Fraccionario");
+        cmdFraccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdNumeroMixtoActionPerformed(evt);
+                cmdFraccionActionPerformed(evt);
             }
         });
-        jPanel2.add(cmdNumeroMixto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
+        jPanel2.add(cmdFraccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, -1));
 
         cmdLimpiar.setText("Limpiar");
         cmdLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +151,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 130, 150));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setText("Fraccionarios");
+        jLabel1.setText("Numeros Mixtos");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         jLabel3.setText("-------");
@@ -154,23 +163,38 @@ public class Principal extends javax.swing.JFrame {
 
         txtNumerador4.setEditable(false);
         txtNumerador4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtNumerador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 40, -1));
+        jPanel1.add(txtNumerador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 40, -1));
 
         txtDenominador4.setEditable(false);
         txtDenominador4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtDenominador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 40, -1));
+        jPanel1.add(txtDenominador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 40, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 40, 10));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 40, 10));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText(">");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 10, 60));
-        jPanel1.add(txtEntero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 30, -1));
+
+        txtEntero1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEntero1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEntero1KeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtEntero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 30, -1));
+
+        txtEntero2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEntero2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEntero2KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtEntero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 30, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 210));
 
-        pack();
+        setSize(new java.awt.Dimension(776, 245));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNumerador1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumerador1KeyTyped
@@ -216,14 +240,17 @@ public class Principal extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
 
-        if (txtNumerador1.getText().trim().isEmpty() && txtNumerador2.getText().trim().isEmpty() && txtDenominador1.getText().trim().isEmpty() && txtDenominador2.getText().trim().isEmpty()) {
+        if (txtNumerador1.getText().trim().isEmpty() && txtNumerador2.getText().trim().isEmpty() && txtDenominador1.getText().trim().isEmpty() && txtDenominador2.getText().trim().isEmpty() && txtEntero1.getText().trim().isEmpty() && txtEntero2.getText().trim().isEmpty()) {
             Helper.mensaje(null, "Ingrese Los Datos", "Error", 2);
-            txtNumerador1.requestFocusInWindow();
+            txtEntero1.requestFocusInWindow();
 
             txtNumerador1.setEnabled(true);
             txtNumerador2.setEnabled(true);
             txtDenominador1.setEnabled(true);
             txtDenominador2.setEnabled(true);
+            txtEntero1.setEnabled(true);
+            txtEntero2.setEnabled(true);
+            txtEntero3.setEnabled(true);
 
         } else if (txtNumerador1.getText().trim().isEmpty()) {
             Helper.mensaje(null, "Ingrese El Numerador 1", "Error", 2);
@@ -233,6 +260,9 @@ public class Principal extends javax.swing.JFrame {
             txtNumerador2.setEnabled(true);
             txtDenominador1.setEnabled(true);
             txtDenominador2.setEnabled(true);
+            txtEntero1.setEnabled(true);
+            txtEntero2.setEnabled(true);
+            txtEntero3.setEnabled(true);
 
         } else if (txtNumerador2.getText().trim().isEmpty()) {
             Helper.mensaje(null, "Ingrese El Numerador 2", "Error", 2);
@@ -242,6 +272,9 @@ public class Principal extends javax.swing.JFrame {
             txtNumerador2.setEnabled(true);
             txtDenominador1.setEnabled(true);
             txtDenominador2.setEnabled(true);
+            txtEntero1.setEnabled(true);
+            txtEntero2.setEnabled(true);
+            txtEntero3.setEnabled(true);
 
         } else if (txtDenominador1.getText().trim().isEmpty()) {
             Helper.mensaje(null, "Ingrese El Denominador 1", "Error", 2);
@@ -251,6 +284,9 @@ public class Principal extends javax.swing.JFrame {
             txtNumerador2.setEnabled(true);
             txtDenominador1.setEnabled(true);
             txtDenominador2.setEnabled(true);
+            txtEntero1.setEnabled(true);
+            txtEntero2.setEnabled(true);
+            txtEntero3.setEnabled(true);
 
         } else if (txtDenominador2.getText().trim().isEmpty()) {
             Helper.mensaje(null, "Ingrese El Denominador 2", "Error", 2);
@@ -260,10 +296,37 @@ public class Principal extends javax.swing.JFrame {
             txtNumerador2.setEnabled(true);
             txtDenominador1.setEnabled(true);
             txtDenominador2.setEnabled(true);
+            txtEntero1.setEnabled(true);
+            txtEntero2.setEnabled(true);
+            txtEntero3.setEnabled(true);
+
+        } else if (txtEntero1.getText().trim().isEmpty()) {
+            Helper.mensaje(null, "Ingrese El Entero 1", "Error", 2);
+            txtEntero1.requestFocusInWindow();
+
+            txtNumerador1.setEnabled(true);
+            txtNumerador2.setEnabled(true);
+            txtDenominador1.setEnabled(true);
+            txtDenominador2.setEnabled(true);
+            txtEntero1.setEnabled(true);
+            txtEntero2.setEnabled(true);
+            txtEntero3.setEnabled(true);
+
+        } else if (txtEntero2.getText().trim().isEmpty()) {
+            Helper.mensaje(null, "Ingrese El Entero 2", "Error", 2);
+            txtEntero2.requestFocusInWindow();
+
+            txtNumerador1.setEnabled(true);
+            txtNumerador2.setEnabled(true);
+            txtDenominador1.setEnabled(true);
+            txtDenominador2.setEnabled(true);
+            txtEntero1.setEnabled(true);
+            txtEntero2.setEnabled(true);
+            txtEntero3.setEnabled(true);
 
         } else {
 
-            int op, n1, n2, d1, d2, e1,e2;
+            int op, n1, n2, d1, d2, e1, e2;
             NumeroMixto m1, m2, m3 = null;
             op = cmbOp.getSelectedIndex();
 
@@ -276,84 +339,71 @@ public class Principal extends javax.swing.JFrame {
 
             try {
                 m1 = new NumeroMixto(e1, n1, n2);
-                m2 = new NumeroMixto(e2, d1 ,d2 );
+                m2 = new NumeroMixto(e2, d1, d2);
 
                 switch (op) {
                     case 0:
-                    m3 = m1.Suma(m2);
-                    break;
+                        m3 = m1.Suma(m2);
+                        break;
                     case 1:
-                    m3 = m1.Resta(m2);
-                    break;
+                        m3 = m1.Resta(m2);
+                        break;
                     case 2:
-                    m3 = m1.Multiplicacion(m2);
-                    break;
+                        m3 = m1.Multiplicacion(m2);
+                        break;
                     case 3:
-                    m3 = m1.Division(m2);
-                    break;
-                    
-                    
+                        m3 = m1.Division(m2);
+                        break;
 
                 }
                 txtNumerador3.setText("" + m3.getNumerador());
                 txtDenominador3.setText("" + m3.getDenominador());
-                txtEntero3.setText(""+m3.getEntero());
+                txtEntero3.setText("" + m3.getEntero());
             } catch (DenominadorCeroException e) {
                 Helper.mensaje(null, "No se puede colocar 0 en el denominador", "Error", 2);
 
             }
-            cmdNumeroMixto.setEnabled(true);
+            cmdFraccion.setEnabled(true);
             txtNumerador1.setEnabled(false);
             txtNumerador2.setEnabled(false);
             txtDenominador1.setEnabled(false);
             txtDenominador2.setEnabled(false);
             txtNumerador3.setEnabled(true);
             txtDenominador3.setEnabled(true);
-            txtEntero3.setEnabled(false);
+            txtEntero3.setEnabled(true);
             txtNumerador4.setEnabled(false);
             txtDenominador4.setEnabled(false);
+            txtEntero1.setEnabled(false);
+            txtEntero2.setEnabled(false);
         }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
-    private void cmdNumeroMixtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdNumeroMixtoActionPerformed
+    private void cmdFraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdFraccionActionPerformed
 
-        if (Integer.parseInt(txtNumerador3.getText()) <= Integer.parseInt(txtDenominador3.getText())) {
-            Helper.mensaje(null, "El Numerador Debe Ser Mayor Que El Denominador Para Pasarlo A Mixto", "Error", 2);
-            cmdCalcular.setEnabled(true);
-            cmdNumeroMixto.setEnabled(true);
-            txtNumerador1.setEnabled(false);
-            txtNumerador2.setEnabled(false);
-            txtDenominador1.setEnabled(false);
-            txtDenominador2.setEnabled(false);
-            txtNumerador3.setEnabled(true);
-            txtDenominador3.setEnabled(true);
-            txtEntero3.setEnabled(false);
-            txtNumerador4.setEnabled(false);
-            txtDenominador4.setEnabled(false);
+        int num, den;
 
-        } else {
+        num = Integer.parseInt(txtEntero3.getText()) * Integer.parseInt(txtDenominador3.getText()) + Integer.parseInt(txtNumerador3.getText());
+        den = Integer.parseInt(txtDenominador3.getText());
 
-            int Mod, Coc;
+        txtNumerador4.setText("" + num);
+        txtDenominador4.setText("" + den);
+        txtDenominador4.setText(txtDenominador3.getText());
+        cmdCalcular.setEnabled(true);
+        cmdFraccion.setEnabled(true);
+        txtNumerador1.setEnabled(false);
+        txtNumerador2.setEnabled(false);
+        txtDenominador1.setEnabled(false);
+        txtDenominador2.setEnabled(false);
+        txtNumerador3.setEnabled(false);
+        txtDenominador3.setEnabled(false);
+        txtEntero1.setEnabled(false);
+        txtEntero2.setEnabled(false);
+        txtEntero3.setEnabled(true);
+        txtNumerador4.setEnabled(true);
+        txtDenominador4.setEnabled(true);
+        txtEntero3.setEnabled(false);
 
-            Mod = Integer.parseInt(txtNumerador3.getText()) % Integer.parseInt(txtDenominador3.getText());
-            Coc = Integer.parseInt(txtNumerador3.getText()) / Integer.parseInt(txtDenominador3.getText());
-
-            txtNumerador4.setText("" + Mod);
-            txtEntero3.setText("" + Coc);
-            txtDenominador4.setText(txtDenominador3.getText());
-            cmdCalcular.setEnabled(true);
-            cmdNumeroMixto.setEnabled(true);
-            txtNumerador1.setEnabled(false);
-            txtNumerador2.setEnabled(false);
-            txtDenominador1.setEnabled(false);
-            txtDenominador2.setEnabled(false);
-            txtNumerador3.setEnabled(false);
-            txtDenominador3.setEnabled(false);
-            txtEntero3.setEnabled(true);
-            txtNumerador4.setEnabled(true);
-            txtDenominador4.setEnabled(true);
-        }
-    }//GEN-LAST:event_cmdNumeroMixtoActionPerformed
+    }//GEN-LAST:event_cmdFraccionActionPerformed
 
     private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
 
@@ -366,21 +416,46 @@ public class Principal extends javax.swing.JFrame {
         txtEntero3.setText("");
         txtDenominador4.setText("");
         txtNumerador4.setText("");
+        txtEntero1.setText("");
+        txtEntero2.setText("");
         txtNumerador1.setEnabled(true);
         txtNumerador2.setEnabled(true);
+        txtEntero1.setEnabled(true);
+        txtEntero2.setEnabled(true);
+        txtEntero3.setEnabled(false);
         txtDenominador1.setEnabled(true);
         txtDenominador2.setEnabled(true);
-        cmdNumeroMixto.setEnabled(false);
+        cmdFraccion.setEnabled(false);
         txtNumerador3.setEnabled(false);
         txtDenominador3.setEnabled(false);
         cmdCalcular.setEnabled(true);
         txtEntero3.setEnabled(false);
         txtNumerador4.setEnabled(false);
         txtDenominador4.setEnabled(false);
-        txtNumerador1.requestFocusInWindow();
+        txtEntero1.requestFocusInWindow();
         cmbOp.setEnabled(true);
         cmbOp.setSelectedIndex(0);
     }//GEN-LAST:event_cmdLimpiarActionPerformed
+
+    private void txtEntero1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntero1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtEntero1KeyTyped
+
+    private void txtEntero2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntero2KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtEntero2KeyTyped
 
     /**
      * @param args the command line arguments
@@ -420,8 +495,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbOp;
     private javax.swing.JButton cmdCalcular;
+    private javax.swing.JButton cmdFraccion;
     private javax.swing.JButton cmdLimpiar;
-    private javax.swing.JButton cmdNumeroMixto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
