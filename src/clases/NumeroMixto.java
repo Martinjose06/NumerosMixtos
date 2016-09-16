@@ -15,13 +15,16 @@ public class NumeroMixto {
     private int numerador;
     private int denominador;
 
-    public NumeroMixto(int entero, int numerador, int denominador) throws DenominadorCeroException {
+    public NumeroMixto(int entero, int numerador, int denominador)  {
         this.entero = entero;
         this.numerador = numerador;
         this.denominador = denominador;
-        if (denominador == 0) {
-            throw new DenominadorCeroException();
-        }
+       
+    }
+    
+    public NumeroMixto(int numerador, int denominador){
+        this.numerador = numerador;
+        this.denominador = denominador;
     }
 
     public int getEntero() {
@@ -48,7 +51,7 @@ public class NumeroMixto {
         this.denominador = denominador;
     }
 
-    public NumeroMixto Suma(NumeroMixto m2) throws DenominadorCeroException {
+    public NumeroMixto Suma(NumeroMixto m2) {
         int NumI1, DenI1, NumI2, DenI2, num, den, NumM, DenM, EntM;
         NumeroMixto m;
         NumI1 = this.entero * this.denominador + this.numerador;
@@ -72,7 +75,7 @@ public class NumeroMixto {
         return m;
     }
 
-    public NumeroMixto Resta(NumeroMixto m2) throws DenominadorCeroException {
+    public NumeroMixto Resta(NumeroMixto m2) {
         int NumI1, DenI1, NumI2, DenI2, num, den, NumM, DenM, EntM;
         NumeroMixto m;
         NumI1 = this.entero * this.denominador + this.numerador;
@@ -97,7 +100,7 @@ public class NumeroMixto {
 
     }
     
-    public NumeroMixto Multiplicacion(NumeroMixto m2) throws DenominadorCeroException{
+    public NumeroMixto Multiplicacion(NumeroMixto m2) {
         int NumI1, DenI1, NumI2, DenI2, num, den, NumM, DenM, EntM;
         NumeroMixto m;
         NumI1 = this.entero * this.denominador + this.numerador;
@@ -116,7 +119,7 @@ public class NumeroMixto {
     
     
     
-    public NumeroMixto Division(NumeroMixto m2) throws DenominadorCeroException{
+    public NumeroMixto Division(NumeroMixto m2){
         int NumI1, DenI1, NumI2, DenI2, num, den, NumM, DenM, EntM;
         NumeroMixto m;
         NumI1 = this.entero * this.denominador + this.numerador;
@@ -132,6 +135,13 @@ public class NumeroMixto {
         m = new NumeroMixto(EntM, NumM, DenM);
         return m;
         
+        
+    }
+    
+    
+    public void ConvertirFraccionario(){
+        int num = (this.getEntero() * this.getDenominador()) + this.getNumerador();
+        this.numerador = num;
         
     }
 

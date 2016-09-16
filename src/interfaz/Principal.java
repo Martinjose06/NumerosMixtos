@@ -16,6 +16,7 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    NumeroMixto m1, m2, m3 = null,m4,m5;
     public Principal() {
         initComponents();
         txtEntero1.requestFocusInWindow();
@@ -327,7 +328,7 @@ public class Principal extends javax.swing.JFrame {
         } else {
 
             int op, n1, n2, d1, d2, e1, e2;
-            NumeroMixto m1, m2, m3 = null;
+
             op = cmbOp.getSelectedIndex();
 
             n1 = Integer.parseInt(txtNumerador1.getText());
@@ -337,7 +338,21 @@ public class Principal extends javax.swing.JFrame {
             e1 = Integer.parseInt(txtEntero1.getText());
             e2 = Integer.parseInt(txtEntero2.getText());
 
-            try {
+            if (n2 == 0 || d2 == 0) {
+                Helper.mensaje(this, "No puede dividir entre 0", "Error", 2);
+                cmdFraccion.setEnabled(false);
+                txtNumerador1.setEnabled(true);
+                txtNumerador2.setEnabled(true);
+                txtDenominador1.setEnabled(true);
+                txtDenominador2.setEnabled(true);
+                txtNumerador3.setEnabled(false);
+                txtDenominador3.setEnabled(false);
+                txtEntero3.setEnabled(false);
+                txtNumerador4.setEnabled(false);
+                txtDenominador4.setEnabled(false);
+                txtEntero1.setEnabled(true);
+                txtEntero2.setEnabled(true);
+            } else {
                 m1 = new NumeroMixto(e1, n1, n2);
                 m2 = new NumeroMixto(e2, d1, d2);
 
@@ -356,38 +371,35 @@ public class Principal extends javax.swing.JFrame {
                         break;
 
                 }
+
                 txtNumerador3.setText("" + m3.getNumerador());
                 txtDenominador3.setText("" + m3.getDenominador());
                 txtEntero3.setText("" + m3.getEntero());
-            } catch (DenominadorCeroException e) {
-                Helper.mensaje(null, "No se puede colocar 0 en el denominador", "Error", 2);
-
+                cmdFraccion.setEnabled(true);
+                txtNumerador1.setEnabled(false);
+                txtNumerador2.setEnabled(false);
+                txtDenominador1.setEnabled(false);
+                txtDenominador2.setEnabled(false);
+                txtNumerador3.setEnabled(true);
+                txtDenominador3.setEnabled(true);
+                txtEntero3.setEnabled(true);
+                txtNumerador4.setEnabled(false);
+                txtDenominador4.setEnabled(false);
+                txtEntero1.setEnabled(false);
+                txtEntero2.setEnabled(false);
             }
-            cmdFraccion.setEnabled(true);
-            txtNumerador1.setEnabled(false);
-            txtNumerador2.setEnabled(false);
-            txtDenominador1.setEnabled(false);
-            txtDenominador2.setEnabled(false);
-            txtNumerador3.setEnabled(true);
-            txtDenominador3.setEnabled(true);
-            txtEntero3.setEnabled(true);
-            txtNumerador4.setEnabled(false);
-            txtDenominador4.setEnabled(false);
-            txtEntero1.setEnabled(false);
-            txtEntero2.setEnabled(false);
+
+
         }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdFraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdFraccionActionPerformed
 
-        int num, den;
-
-        num = Integer.parseInt(txtEntero3.getText()) * Integer.parseInt(txtDenominador3.getText()) + Integer.parseInt(txtNumerador3.getText());
-        den = Integer.parseInt(txtDenominador3.getText());
-
-        txtNumerador4.setText("" + num);
-        txtDenominador4.setText("" + den);
-        txtDenominador4.setText(txtDenominador3.getText());
+        
+        
+        m3.ConvertirFraccionario();
+        txtNumerador4.setText(""+m3.getNumerador());
+        txtDenominador4.setText(""+m3.getDenominador());
         cmdCalcular.setEnabled(true);
         cmdFraccion.setEnabled(true);
         txtNumerador1.setEnabled(false);
